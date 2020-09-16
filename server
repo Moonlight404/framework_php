@@ -1,0 +1,8 @@
+<?php
+error_reporting(false);
+require('./bootstrap/autoload.php');
+$server = file_get_contents("env.json");;
+$server = json_decode($server);
+
+$serverLoad = new Load();
+$serverLoad->startServer($server->server->port);
