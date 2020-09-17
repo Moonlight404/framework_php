@@ -9,6 +9,22 @@ $r->routerSystem(array(
         "route" => "/",
         "path" => "home",
         "validationLogged" => false,
+        "logged" => true,
+        "loggedPath" => "logged",
+        "notLoggedPath" => "home"
+    )),
+    $r->get(array(
+        "route" => "/dashboard",
+        "path" => "logged",
+        "validationLogged" => false,
+        "logged" => false,
+        "loggedPath" => "logged",
+        "notLoggedPath" => "home"
+    )),
+    $r->get(array(
+        "route" => "/haha",
+        "path" => "logged",
+        "validationLogged" => false,
         "logged" => false,
         "loggedPath" => "logged",
         "notLoggedPath" => "home"
