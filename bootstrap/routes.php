@@ -27,9 +27,29 @@ class Routes {
             $route = str_replace($notValid, "", json_encode($array[$i][$b]['route']));
             $template = str_replace($notValid, "", json_encode($array[$i][$b]['path']));
             if($route == $_SERVER['REQUEST_URI']){
-                if(require("../template/$template.php")){
-                    return;
+                $isLogged = json_encode($array[$i][$b]['logged']);
+                $loggedValidation = json_encode($array[$i][$b]['validationLogged']);
+                $loggedPath = json_encode($array[$i][$b]['loggedPath']);
+                $notLoggedPath = json_encode($array[$i][$b]['notLoggedPath']);
+                $loggedPath = str_replace($notValid, '', $loggedPath);
+                $notLoggedPath = str_replace($notValid, '', $notLoggedPath);
+                if($loggedValidation){
+                    if($isLogged == 'true'){
+                        if(require("../template/$loggedPath.php")){
+                            return;
+                        }
+                    } else{
+                        if(require("../template/$notLoggedPath.php")){
+                            return;
+                        }
+                    }
+                    
+                } else{
+                    if(require("../template/$template.php")){
+                        return;
+                    }
                 }
+                
             }
         }
         }

@@ -7,6 +7,10 @@ $r = new Routes;
 $r->routerSystem(array(
     $r->get(array(
         "route" => "/",
-        "path" => "home"
+        "path" => "home",
+        "validationLogged" => false,
+        "logged" => false,
+        "loggedPath" => "logged",
+        "notLoggedPath" => "home"
     ))
 ));
